@@ -93,7 +93,7 @@ godseye-holborn/
 ├── tests/
 │   ├── unit/             # Vitest unit tests
 │   └── e2e/              # Playwright E2E tests
-├── deploy.sh             # One-command deploy
+├── scripts/              # deploy + e2e runtime helpers
 └── .github/workflows/    # CI pipeline
 ```
 
@@ -154,7 +154,7 @@ VITE_PROXY_BASE_URL=https://<your-api-gateway-id>.execute-api.eu-west-2.amazonaw
 npm run deploy
 ```
 
-This builds the frontend, syncs hashed assets to S3 with long-lived caching, uploads `index.html` with no-cache headers, and invalidates the CloudFront distribution. See [ARCHITECTURE.md](ARCHITECTURE.md) for the full system design.
+This builds the frontend, syncs hashed assets to S3 with long-lived caching, uploads `index.html` with no-cache headers, and invalidates the CloudFront distribution. See [ARCHITECTURE.md](docs/ARCHITECTURE.md) for the full system design.
 
 ## Architecture
 

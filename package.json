@@ -18,7 +18,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "type-check": "tsc --noEmit",
     "scan:secrets": "bash tests/no-secrets.sh",
-    "deploy:aws": "bash deploy.sh",
+    "deploy:aws": "bash scripts/deploy.sh",
     "deploy": "npm run deploy:aws"
   },
   "dependencies": {
