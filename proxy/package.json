@@ -1,0 +1,14 @@
+{
+  "name": "godseye-proxy",
+  "version": "1.0.0",
+  "description": "AWS Lambda proxy for Godseye Holborn",
+  "private": true,
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --format=cjs --outfile=dist/index.js",
+    "build:zip": "npm run build && cd dist && zip -q -r ../function.zip ."
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.4",
+    "typescript": "^5.3.3"
+  }
+}

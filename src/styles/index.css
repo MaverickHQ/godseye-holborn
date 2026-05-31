@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+:root {
+  --background: #0F172A;
+  --surface: #1E293B;
+  --surface-hover: #334155;
+  --border: #334155;
+  --accent: #3B82F6;
+  --danger: #EF4444;
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  
+  /* Legacy aliases */
+  --deep-space: #0F172A;
+  --panel-dark: #1E293B;
+  --panel-medium: #334155;
+  --grid-blue: #475569;
+  --cyan-accent: #3B82F6;
+  --alert-red: #EF4444;
+  --live-green: #22C55E;
+  --warning-gold: #F59E0B;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--background);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+/* Fade in animation */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 500ms ease-out forwards;
+}
+
+/* Slide up animation */
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 400ms ease-out forwards;
+}
+
+/* Panel styles */
+@layer components {
+  .panel {
+    @apply bg-slate-800 border border-slate-700 rounded-xl shadow-panel-lg;
+  }
+  
+  .panel-header {
+    @apply flex items-center justify-between px-4 py-3 border-b border-slate-700;
+  }
+  
+  .panel-content {
+    @apply p-4;
+  }
+  
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium text-sm transition-colors duration-200
+           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 
+           focus:ring-offset-slate-900 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-primary {
+    @apply bg-blue-500 hover:bg-blue-600 text-white;
+  }
+  
+  .btn-ghost {
+    @apply bg-transparent hover:bg-slate-700 text-slate-300;
+  }
+  
+  .btn-icon {
+    @apply p-2 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-100 
+           transition-colors duration-200 focus:outline-none focus:ring-2 
+           focus:ring-blue-500;
+  }
+  
+  .input {
+    @apply w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 
+           text-slate-100 text-sm placeholder-slate-500
+           focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500;
+  }
+  
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-blue {
+    @apply bg-blue-500/20 text-blue-400;
+  }
+  
+  .badge-green {
+    @apply bg-green-500/20 text-green-400;
+  }
+  
+  .badge-red {
+    @apply bg-red-500/20 text-red-400;
+  }
+  
+  .badge-yellow {
+    @apply bg-yellow-500/20 text-yellow-400;
+  }
+  
+  .metric-value {
+    @apply text-2xl font-semibold text-slate-100;
+  }
+  
+  .metric-label {
+    @apply text-sm text-slate-400;
+  }
+}
+
+/* Leaflet map customization */
+.leaflet-container {
+  background-color: var(--background) !important;
+}
+
+.leaflet-control-zoom {
+  border: 1px solid var(--border) !important;
+}
+
+.leaflet-control-zoom a {
+  background-color: var(--surface) !important;
+  color: var(--accent) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background-color: var(--surface-hover) !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background-color: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-primary) !important;
+  border-radius: 12px;
+}
+
+.leaflet-popup-tip {
+  background-color: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: var(--text-primary);
+}
+
+/* Status indicators */
+.status-dot {
+  @apply w-2 h-2 rounded-full;
+}
+
+.status-dot-live {
+  @apply bg-green-500 animate-pulse;
+}
+
+.status-dot-offline {
+  @apply bg-red-500;
+}
+
+.status-dot-loading {
+  @apply bg-yellow-500 animate-pulse;
+}
